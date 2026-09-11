@@ -159,11 +159,16 @@ best_model = trained_models[best_model_name]
 
 print(f"\nBest model: {best_model_name}")
 
+
+# Use a project-local MLflow tracking database
+DB_PATH = BASE_DIR / "mlflow.db"
+mlflow.set_tracking_uri(f"sqlite:///{DB_PATH}")
+
 # Track the best model with MLflow
 
 mlflow.set_experiment("Food_Delivery_ETA")
 
-with mlflow.start_run(run_name=best_model_name):
+with mlflow.start_run(run_name=best_model_name) as run:
 
     predictions = best_model.predict(X_test)
 
@@ -182,6 +187,17 @@ with mlflow.start_run(run_name=best_model_name):
     skops_trusted_types=["numpy.dtype"])
 
     print("Best model logged to MLflow.")
+
+    # Register the best model
+    
+    registered_model_name = "Food_Delivery_ETA_Model"
+
+    mlflow.register_model(
+        model_uri=f"runs:/{run.info.run_id}/model",
+        name=registered_model_name
+    )
+
+    
     
 # Save the best trained model
 
