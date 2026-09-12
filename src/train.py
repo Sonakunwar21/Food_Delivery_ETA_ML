@@ -203,6 +203,11 @@ with mlflow.start_run(run_name=best_model_name) as run:
 
 import joblib
 MODEL_PATH = BASE_DIR / "models" / "best_model.pkl"
+
+# Create model directory if it does not exist
+
+MODEL_PATH.parent.mkdir(parents=True, exist_ok=True)
+
 joblib.dump(best_model, MODEL_PATH)
 print(f"Best model saved at: {MODEL_PATH}")
 
