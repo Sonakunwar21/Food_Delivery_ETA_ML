@@ -10,9 +10,6 @@ venv/
 mlflow.db
 mlruns/
 
-# Model artifacts
-models/*.pkl
-
 # Jupyter
 .ipynb_checkpoints/
 
