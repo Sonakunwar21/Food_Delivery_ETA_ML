@@ -61,3 +61,73 @@ factors such as:
 
 ```text
 Time_taken (min)
+```
+---
+
+## 🔎 Exploratory Data Analysis
+
+EDA was performed to understand the structure of the dataset and identify
+the factors that influence delivery time.
+
+### Analysis Performed
+
+- 📊 Univariate Analysis
+- 🔗 Bivariate Analysis
+- 🧩 Multivariate Analysis
+- 📈 Correlation Analysis
+- 📍 Delivery Distance Analysis
+- 🌦️ Weather vs Delivery Time
+- 🛵 Vehicle Type vs Delivery Time
+- 📦 Order Type vs Delivery Time
+- 🏙️ City vs Delivery Time
+
+### Key Insights
+
+| Factor | Observation |
+|---|---|
+| ⭐ Ratings | Delivery ratings show a relationship with delivery time |
+| 📦 Multiple Deliveries | Multiple deliveries tend to increase delivery duration |
+| 🛵 Vehicle Condition | Vehicle condition has an observable relationship with delivery time |
+| 🚦 Traffic | Traffic conditions contribute to delivery-time variation |
+| 🌦️ Weather | Weather conditions show differences in delivery duration |
+
+---
+
+## 🤖 Machine Learning
+
+The problem was treated as a **Regression** task because the target
+variable represents delivery time in minutes.
+
+### Models Evaluated
+
+| Model | MAE ↓ | RMSE ↓ | R² ↑ |
+|:---|---:|---:|---:|
+| Linear Regression | 4.961 | 6.262 | 0.555 |
+| **Random Forest** 🏆 | **3.298** | **4.177** | **0.802** |
+
+---
+
+## 🏆 Best Model — Random Forest
+
+After comparing the evaluated models, **Random Forest Regression** was
+selected as the best-performing model.
+
+<div align="center">
+
+| 📊 Metric | Result |
+|:---:|:---:|
+| **R² Score** | **0.802** |
+| **MAE** | **3.298 min** |
+| **RMSE** | **4.177 min** |
+
+</div>
+
+### Why Random Forest?
+
+Random Forest performed better than Linear Regression on the test set,
+achieving lower prediction errors and a substantially higher R² score.
+
+The trained model is saved as:
+
+```text
+models/best_model.pkl
