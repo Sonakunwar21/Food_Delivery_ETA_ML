@@ -28,7 +28,6 @@ GitHub Actions and AWS.
 </div>
 
 ---
--
 
 ## 📌 Project Overview
 
