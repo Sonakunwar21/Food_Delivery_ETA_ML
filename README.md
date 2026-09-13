@@ -10,20 +10,25 @@ GitHub Actions and AWS.
 <br>
 
 ![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-ML-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
 ![MLflow](https://img.shields.io/badge/MLflow-Tracking-0194E2?style=for-the-badge&logo=mlflow&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-Container-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![AWS](https://img.shields.io/badge/AWS-ECR%20%7C%20ECS-FF9900?style=for-the-badge&logo=amazon-aws&logoColor=white)
-![GitHub Actions](https://img.shields.io/badge/GitHub-Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
 
 <br>
 
 **📊 Data → 🤖 ML → 🧪 MLflow → 🐳 Docker → 🔄 CI/CD → ☁️ AWS → 🌐 Streamlit**
 
+<br><br>
+
+## 🚀 [LIVE DEMO](https://st-bcb44ed30d2c4b989cbb6c8eb0969281.ecs.us-east-1.on.aws/)
+
+**Try the deployed Food Delivery ETA Prediction App →**
+
 </div>
 
 ---
+-
 
 ## 📌 Project Overview
 
@@ -52,3 +57,244 @@ vehicle and order-related information.
 
 ```text
 Time_taken (min)
+```
+---
+
+## 🔎 Exploratory Data Analysis
+
+- 📊 Univariate Analysis
+- 🔗 Bivariate Analysis
+- 🧩 Multivariate Analysis
+- 📈 Correlation Analysis
+- 📍 Delivery Distance Analysis
+- 🌦️ Weather vs Delivery Time
+- 🛵 Vehicle Type vs Delivery Time
+- 📦 Order Type vs Delivery Time
+- 🏙️ City vs Delivery Time
+
+### Key Insights
+
+| Factor | Observation |
+|:---|:---|
+| ⭐ **Ratings** | Delivery ratings show a relationship with delivery time |
+| 📦 **Multiple Deliveries** | Multiple deliveries tend to increase delivery duration |
+| 🛵 **Vehicle Condition** | Vehicle condition shows a relationship with delivery time |
+| 🚦 **Traffic** | Traffic conditions contribute to delivery-time variation |
+| 🌦️ **Weather** | Weather conditions show differences in delivery duration |
+
+---
+
+## 🤖 Machine Learning
+
+The problem was formulated as a **Regression** task because the target
+variable represents delivery time in minutes.
+
+### Models Evaluated
+
+| Model | MAE ↓ | RMSE ↓ | R² ↑ |
+|:---|---:|---:|---:|
+| Linear Regression | 4.961 | 6.262 | 0.555 |
+| **Random Forest** 🏆 | **3.298** | **4.177** | **0.802** |
+
+---
+
+## 🏆 Best Model — Random Forest
+
+After evaluating the models, **Random Forest Regression** was selected as
+the best-performing model.
+
+### Model Performance
+
+<div align="center">
+
+| Metric | Score |
+|:---:|:---:|
+| 🎯 **R² Score** | **0.802** |
+| 📉 **MAE** | **3.298 min** |
+| 📊 **RMSE** | **4.177 min** |
+
+</div>
+
+The trained model is stored at:
+```text
+models/best_model.pkl
+```
+---
+
+## 🧪 Experiment Tracking with MLflow
+
+**MLflow** is integrated into the project to track and manage the
+Machine Learning lifecycle.
+
+### MLflow Responsibilities
+
+- 📈 Experiment Tracking
+- 📝 Model Logging
+- 🔢 Model Versioning
+- 📦 Model Registry
+
+### Registered Model
+
+```text
+Food_Delivery_ETA_Model
+```
+---
+
+## ⚙️ MLOps Architecture
+
+```mermaid
+flowchart LR
+
+    A[📊 Dataset] --> B[🔎 EDA]
+    B --> C[🤖 Model Training]
+    C --> D[📊 Model Evaluation]
+    D --> E[🧪 MLflow]
+    E --> F[💾 Best Model]
+    F --> G[🐳 Docker]
+    G --> H[🔄 GitHub Actions]
+    H --> I[📦 Amazon ECR]
+    I --> J[☁️ Amazon ECS]
+    J --> K[🌐 Streamlit App]
+```
+---
+
+## 🔄 Project Workflow
+
+```mermaid
+flowchart TD
+
+    A[📊 Dataset]
+    B[🔎 Exploratory Data Analysis]
+    C[🤖 Model Training]
+    D[📊 Model Evaluation]
+    E[🏆 Best Model Selection]
+    F[🧪 MLflow Tracking]
+    G[💾 Save Model]
+    H[🐳 Docker Containerization]
+    I[🔄 GitHub Actions]
+    J[📦 Amazon ECR]
+    K[☁️ Amazon ECS]
+    L[🌐 Streamlit Application]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+    G --> H
+    H --> I
+    I --> J
+    J --> K
+    K --> L
+```
+---
+## 🔄 Automation & Deployment Pipeline
+
+GitHub Actions automates the process of validating, building, and deploying
+the Machine Learning application.
+
+```mermaid
+flowchart LR
+    A[Code Push] --> B[GitHub Actions]
+    B --> C[Validate & Build]
+    C --> D[Docker Image]
+    D --> E[Amazon ECR]
+    E --> F[Amazon ECS]
+    F --> G[Live App]
+```
+
+### Pipeline
+
+- 🧪 **CI** — Validates the training workflow and builds the Docker image.
+- 📦 **Build & Push** — Publishes the latest Docker image to Amazon ECR.
+- 🚀 **CD** — Updates the Amazon ECS service with the new image.
+
+This automation reduces manual deployment steps and provides a consistent
+path from code changes to the deployed application.
+---
+## ☁️ AWS Deployment
+
+The Streamlit application is containerized using Docker and deployed on AWS
+using **Amazon ECR** and **Amazon ECS**.
+
+### Deployment Flow
+
+```mermaid
+flowchart LR
+    A[GitHub] --> B[GitHub Actions]
+    B --> C[Docker]
+    C --> D[Amazon ECR]
+    D --> E[Amazon ECS]
+    E --> F[Streamlit App]
+```
+
+### AWS Services
+
+| Service | Purpose |
+|:---|:---|
+| **Amazon ECR** | Docker image storage |
+| **Amazon ECS** | Container deployment |
+| **AWS IAM** | Secure authentication |
+| **GitHub Actions** | CI/CD automation |
+
+---
+
+## 🖥️ Streamlit Application
+
+The trained **Random Forest model** is integrated into a Streamlit
+application for interactive delivery-time prediction.
+
+```mermaid
+flowchart LR
+    A[User Input] --> B[Random Forest Model]
+    B --> C[ETA Prediction]
+```
+
+## 🛠️ Tech Stack
+
+| Category | Technologies |
+|:---|:---|
+| 🐍 Programming | Python |
+| 📊 Data Analysis | Pandas, NumPy |
+| 📈 Visualization | Matplotlib, Seaborn |
+| 🤖 Machine Learning | Scikit-learn |
+| 🧪 MLOps | MLflow |
+| 🖥️ Application | Streamlit |
+| 🐳 Containerization | Docker |
+| 🔄 CI/CD | GitHub Actions |
+| ☁️ Cloud | AWS ECR, AWS ECS |
+
+---
+
+## 💡 What This Project Demonstrates
+
+- 🤖 End-to-end Machine Learning workflow
+- 🧪 MLflow experiment tracking and model management
+- 🐳 Docker containerization
+- 🔄 CI/CD automation with GitHub Actions
+- ☁️ AWS-based deployment using ECR and ECS
+- 🖥️ Interactive ML application with Streamlit
+
+---
+
+## 🔮 Future Improvements
+
+- Hyperparameter optimization
+- Model monitoring
+- Automated model retraining
+- Data drift detection
+- Cloud-based MLflow tracking
+
+---
+
+## 👩‍💻 Author
+
+### Sona Kunwar
+
+**Data Science & Machine Learning Enthusiast**
+
+Building practical Machine Learning projects and exploring
+production-ready MLOps workflows.
+
+⭐ **If you found this project useful, consider giving it a star!**
