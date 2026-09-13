@@ -28,7 +28,6 @@ GitHub Actions and AWS.
 </div>
 
 ---
--
 
 ## 📌 Project Overview
 
@@ -84,7 +83,7 @@ Time_taken (min)
 
 ---
 
-## 🤖 Machine Learning
+## 🤖 Machine Learning 
 
 The problem was formulated as a **Regression** task because the target
 variable represents delivery time in minutes.
