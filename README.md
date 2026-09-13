@@ -19,12 +19,6 @@ GitHub Actions and AWS.
 
 **📊 Data → 🤖 ML → 🧪 MLflow → 🐳 Docker → 🔄 CI/CD → ☁️ AWS → 🌐 Streamlit**
 
-<br><br>
-
-## 🚀 [LIVE DEMO](https://st-bcb44ed30d2c4b989cbb6c8eb0969281.ecs.us-east-1.on.aws/)
-
-**Try the deployed Food Delivery ETA Prediction App →**
-
 </div>
 
 ---
