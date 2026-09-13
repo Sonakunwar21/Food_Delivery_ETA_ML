@@ -33,3 +33,9 @@ jobs:
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+                - name: Deploy to ECS Service
+        run: |
+          aws ecs update-service \
+            --cluster default \
+            --service streamlit-mlops-app-5c82 \
+            --force-new-deployment
