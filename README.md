@@ -28,6 +28,7 @@ GitHub Actions and AWS.
 </div>
 
 ---
+-
 
 ## 📌 Project Overview
 
@@ -138,12 +139,13 @@ Machine Learning lifecycle.
 Food_Delivery_ETA_Model
 ```
 ---
-
 ## ⚙️ MLOps Architecture
+
+The project follows an end-to-end Machine Learning and MLOps workflow,
+from raw data to a deployed prediction application.
 
 ```mermaid
 flowchart LR
-
     A[📊 Dataset] --> B[🔎 EDA]
     B --> C[🤖 Model Training]
     C --> D[📊 Model Evaluation]
@@ -151,81 +153,22 @@ flowchart LR
     E --> F[💾 Best Model]
     F --> G[🐳 Docker]
     G --> H[🔄 GitHub Actions]
-    H --> I[📦 Amazon ECR]
-    I --> J[☁️ Amazon ECS]
-    J --> K[🌐 Streamlit App]
+    H --> I[☁️ AWS]
+    I --> J[🌐 Streamlit App]
 ```
----
+## ☁️ CI/CD & AWS Deployment
 
-## 🔄 Project Workflow
-
-```mermaid
-flowchart TD
-
-    A[📊 Dataset]
-    B[🔎 Exploratory Data Analysis]
-    C[🤖 Model Training]
-    D[📊 Model Evaluation]
-    E[🏆 Best Model Selection]
-    F[🧪 MLflow Tracking]
-    G[💾 Save Model]
-    H[🐳 Docker Containerization]
-    I[🔄 GitHub Actions]
-    J[📦 Amazon ECR]
-    K[☁️ Amazon ECS]
-    L[🌐 Streamlit Application]
-
-    A --> B
-    B --> C
-    C --> D
-    D --> E
-    E --> F
-    F --> G
-    G --> H
-    H --> I
-    I --> J
-    J --> K
-    K --> L
-```
----
-## 🔄 Automation & Deployment Pipeline
-
-GitHub Actions automates the process of validating, building, and deploying
-the Machine Learning application.
+GitHub Actions automates the validation, Docker image build, and deployment
+process using Amazon ECR and Amazon ECS.
 
 ```mermaid
 flowchart LR
-    A[Code Push] --> B[GitHub Actions]
-    B --> C[Validate & Build]
-    C --> D[Docker Image]
-    D --> E[Amazon ECR]
-    E --> F[Amazon ECS]
-    F --> G[Live App]
-```
-
-### Pipeline
-
-- 🧪 **CI** — Validates the training workflow and builds the Docker image.
-- 📦 **Build & Push** — Publishes the latest Docker image to Amazon ECR.
-- 🚀 **CD** — Updates the Amazon ECS service with the new image.
-
-This automation reduces manual deployment steps and provides a consistent
-path from code changes to the deployed application.
----
-## ☁️ AWS Deployment
-
-The Streamlit application is containerized using Docker and deployed on AWS
-using **Amazon ECR** and **Amazon ECS**.
-
-### Deployment Flow
-
-```mermaid
-flowchart LR
-    A[GitHub] --> B[GitHub Actions]
-    B --> C[Docker]
-    C --> D[Amazon ECR]
-    D --> E[Amazon ECS]
-    E --> F[Streamlit App]
+    A[💻 GitHub Push] --> B[🔄 GitHub Actions]
+    B --> C[🧪 Validate & Build]
+    C --> D[🐳 Docker Image]
+    D --> E[📦 Amazon ECR]
+    E --> F[☁️ Amazon ECS]
+    F --> G[🌐 Live Streamlit App]
 ```
 
 ### AWS Services
